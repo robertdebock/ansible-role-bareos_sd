@@ -19,3 +19,9 @@
     mode: "0640"
   notify:
     - Restart bareos-sd
+
+- name: Start bareos-sd
+  ansible.builtin.service:
+    name: bareos-sd
+    state: started
+    enabled: yes
