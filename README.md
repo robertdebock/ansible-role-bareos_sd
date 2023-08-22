@@ -4,7 +4,7 @@ Install and configure BareOS Storage Daemon on your system.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-bareos_sd/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bareos_sd/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-bareos_sd/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bareos_sd)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/robertdebock/bareos_sd)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/robertdebock/bareos_sd)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-bareos_sd.svg)](https://github.com/robertdebock/ansible-role-bareos_sd/releases/)|
+|[![github](https://github.com/robertdebock/ansible-role-bareos_sd/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bareos_sd/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-bareos_sd/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bareos_sd)|[![quality](https://img.shields.io/ansible/quality/63100)](https://galaxy.ansible.com/robertdebock/bareos_sd)|[![downloads](https://img.shields.io/ansible/role/d/63100)](https://galaxy.ansible.com/robertdebock/bareos_sd)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-bareos_sd.svg)](https://github.com/robertdebock/ansible-role-bareos_sd/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -19,6 +19,13 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
   roles:
     - role: robertdebock.bareos_sd
+      bareos_sd_directors:
+        - name: dir-1
+          password: "somepassword"
+      bareos_sd_messages:
+        - name: "Standard"
+          director: "dir-1 = all, !skipped, !restored"
+          description: "Send all messages to the Director."
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-bareos_sd/blob/master/molecule/default/prepare.yml):
@@ -47,6 +54,17 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 
 # The Storage Daemon has these configuration parameters.
 bareos_sd_hostname: "{{ ansible_fqdn }}"
+
+# You can configure what Directors are allowed to connect to the Storage Daemon.
+# bareos_sd_directors:
+#   - name: dir-1
+#     password: "somepassword"
+
+# You can configure what messages are sent to the Director.
+# bareos_sd_messages: # <- Please set your own value
+#   - name: "Standard"
+#     director: "dir-1 = all, !skipped, !restored"
+#     description: "Send all messages to the Director."
 ```
 
 ## [Requirements](#requirements)

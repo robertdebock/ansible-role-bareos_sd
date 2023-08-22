@@ -6,3 +6,10 @@
 
   roles:
     - role: ansible-role-bareos_sd
+      bareos_sd_directors:
+        - name: dir-1
+          password: "somepassword"
+      bareos_sd_messages:
+        - name: "Standard"
+          director: "dir-1 = all, !skipped, !restored"
+          description: "Send all messages to the Director."
