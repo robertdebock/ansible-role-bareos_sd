@@ -3,11 +3,15 @@
 
 # The Storage Daemon has these configuration parameters.
 bareos_sd_hostname: "{{ ansible_fqdn }}"
+bareos_sd_tls_enable: yes
+bareos_sd_tls_verify_peer: no
 
 # You can configure what Directors are allowed to connect to the Storage Daemon.
 # bareos_sd_directors:
 #   - name: dir-1
 #     password: "somepassword"
+#     tls_enable: yes
+#     tls_verify_peer: no
 
 # You can configure what messages are sent to the Director.
 # bareos_sd_messages: # <- Please set your own value

@@ -8,6 +8,20 @@
       - bareos_sd_hostname is not none
     quiet: yes
 
+- name: assert | Test if bareos_sd_tls_enable is set correctly
+  ansible.builtin.assert:
+    that:
+      - bareos_sd_tls_enable is defined
+      - bareos_sd_tls_enable is boolean
+    quiet: yes
+
+- name: assert | Test if bareos_sd_tls_verify_peer is set correctly
+  ansible.builtin.assert:
+    that:
+      - bareos_sd_tls_verify_peer is defined
+      - bareos_sd_tls_verify_peer is boolean
+    quiet: yes
+
 - name: assert | Test if bareos_sd_directors is set correctly
   ansible.builtin.assert:
     that:
@@ -31,6 +45,30 @@
     label: "{{ item.name }}"
   when:
     - bareos_sd_directors is defined
+
+- name: assert | Test if tls_enable in bareos_sd_directors is set correctly
+  ansible.builtin.assert:
+    that:
+      - item.tls_enable is boolean
+    quiet: yes
+  loop: "{{ bareos_sd_directors }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_directors is defined
+    - item.tls_enable is defined
+
+- name: assert | Test if tls_verify_peer in bareos_sd_directors is set correctly
+  ansible.builtin.assert:
+    that:
+      - item.tls_verify_peer is boolean
+    quiet: yes
+  loop: "{{ bareos_sd_directors }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_directors is defined
+    - item.tls_verify_peer is defined
 
 - name: assert | Test if bareos_sd_messages is set correctly
   ansible.builtin.assert:
