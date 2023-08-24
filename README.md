@@ -1,6 +1,6 @@
 # [bareos_sd](#bareos_sd)
 
-Install and configure BareOS Storage Daemon on your system.
+Install and configure [BareOS](https://www.bareos.com/) Storage Daemon on your system.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
@@ -54,11 +54,15 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 
 # The Storage Daemon has these configuration parameters.
 bareos_sd_hostname: "{{ ansible_fqdn }}"
+bareos_sd_tls_enable: yes
+bareos_sd_tls_verify_peer: no
 
 # You can configure what Directors are allowed to connect to the Storage Daemon.
 # bareos_sd_directors:
 #   - name: dir-1
 #     password: "somepassword"
+#     tls_enable: yes
+#     tls_verify_peer: no
 
 # You can configure what messages are sent to the Director.
 # bareos_sd_messages: # <- Please set your own value
