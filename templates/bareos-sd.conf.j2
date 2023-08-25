@@ -2,6 +2,6 @@
 
 Storage {
   Name = {{ bareos_sd_hostname }}
-  TLS Enable = {{ bareos_sd_tls_enable | tenary('Yes', 'No') }}
-  TLS Verify Peer = {{ bareos_sd_tls_verify_peer | tenary('Yes', 'No') }}
+  TLS Enable = {{ bareos_sd_tls_enable | ternary('Yes', 'No') }}
+  TLS Verify Peer = {{ bareos_sd_tls_verify_peer | ternary('Yes', 'No') }}
 }
