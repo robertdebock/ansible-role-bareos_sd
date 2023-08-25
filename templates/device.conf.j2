@@ -4,10 +4,10 @@ Device {
   Name = {{ item.name }}
   Media Type = {{ item.media_type }}
   Archive Device = "{{ item.archive_device }}"
-  LabelMedia = "{{ item.label_media }}"
-  Random Access = {{ item.random_access }}
-  AutomaticMount = {{ item.automatic_mount }}
-  RemovableMedia = {{ item.removable_media }}
-  AlwaysOpen = {{ item.always_open }}
+  LabelMedia = {{ item.label_media | tenary('yes', 'No') }}
+  Random Access = {{ item.random_access | tenary('yes', 'No') }}
+  AutomaticMount = {{ item.automatic_mount | tenary('yes', 'No') }}
+  RemovableMedia = {{ item.removable_media | tenary('yes', 'No') }}
+  AlwaysOpen = {{ item.always_open | tenary('yes', 'No') }}
   Description = "{{ item.description }}"
 }
