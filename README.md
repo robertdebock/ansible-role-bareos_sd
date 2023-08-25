@@ -26,6 +26,16 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
         - name: "Standard"
           director: "dir-1 = all, !skipped, !restored"
           description: "Send all messages to the Director."
+      bareos_sd_devices:
+        - name: "FileStorage"
+          media_type: "File"
+          archive_device: "/var/lib/bareos/storage"
+          label_media: yes
+          random_access: yes
+          automatic_mount: yes
+          removable_media: no
+          always_open: no
+          description: "File device. A connecting Director must have the same Name and MediaType."
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-bareos_sd/blob/master/molecule/default/prepare.yml):
@@ -63,6 +73,18 @@ bareos_sd_tls_verify_peer: no
 #     password: "somepassword"
 #     tls_enable: yes
 #     tls_verify_peer: no
+
+# You can configure devices available on the Storage Daemon.
+# bareos_sd_devices:
+#   - name: "FileStorage"
+#     media_type: "File"
+#     archive_device: "/var/lib/bareos/storage"
+#     label_media: yes
+#     random_access: yes
+#     automatic_mount: yes
+#     removable_media: no
+#     always_open: no
+#     description: "File device. A connecting Director must have the same Name and MediaType."
 
 # You can configure what messages are sent to the Director.
 # bareos_sd_messages: # <- Please set your own value

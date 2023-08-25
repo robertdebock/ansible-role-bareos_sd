@@ -30,7 +30,22 @@
   notify:
     - Restart bareos-sd
 
-- name: Place messages
+- name: Place device
+  ansible.builtin.template:
+    src: device.conf.j2
+    dest: "/etc/bareos/bareos-sd.d/device/{{ item.name }}.conf"
+    owner: bareos
+    group: bareos
+    mode: "0640"
+  loop: "{{ bareos_sd_devices }}"
+  loop_control:
+    label: "{{ item.name }}"
+  notify:
+    - Restart bareos-sd
+  when:
+    - bareos_sd_devices is defined
+
+- name: Place message
   ansible.builtin.template:
     src: message.conf.j2
     dest: "/etc/bareos/bareos-sd.d/messages/{{ item.name | capitalize }}.conf"

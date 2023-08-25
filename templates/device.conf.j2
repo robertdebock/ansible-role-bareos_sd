@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+
+Device {
+  Name = {{ item.name }}
+  Media Type = {{ item.media_type }}
+  Archive Device = "{{ item.archive_device }}"
+  LabelMedia = "{{ item.label_media }}"
+  Random Access = {{ item.random_access }}
+  AutomaticMount = {{ item.automatic_mount }}
+  RemovableMedia = {{ item.removable_media }}
+  AlwaysOpen = {{ item.always_open }}
+  Description = "{{ item.description }}"
+}
