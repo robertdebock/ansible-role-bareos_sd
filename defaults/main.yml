@@ -5,28 +5,3 @@
 bareos_sd_hostname: "{{ ansible_fqdn }}"
 bareos_sd_tls_enable: yes
 bareos_sd_tls_verify_peer: no
-
-# You can configure what Directors are allowed to connect to the Storage Daemon.
-# bareos_sd_directors:
-#   - name: dir-1
-#     password: "somepassword"
-#     tls_enable: yes
-#     tls_verify_peer: no
-
-# You can configure devices available on the Storage Daemon.
-# bareos_sd_devices:
-#   - name: "FileStorage"
-#     media_type: "File"
-#     archive_device: "/var/lib/bareos/storage"
-#     label_media: yes
-#     random_access: yes
-#     automatic_mount: yes
-#     removable_media: no
-#     always_open: no
-#     description: "File device. A connecting Director must have the same Name and MediaType."
-
-# You can configure what messages are sent to the Director.
-# bareos_sd_messages: # <- Please set your own value
-#   - name: "Standard"
-#     director: "dir-1 = all, !skipped, !restored"
-#     description: "Send all messages to the Director."
