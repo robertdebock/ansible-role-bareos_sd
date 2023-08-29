@@ -9,7 +9,7 @@ argument_specs:
     options:
       bareos_sd_hostname:
         type: "str"
-        default: "{{ inventory_hostname}}"
+        default: "{{ inventory_hostname }}"
         description: "The hostname of the Storage Daemon."
       bareos_sd_directors:
         type: "list"
