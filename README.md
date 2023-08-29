@@ -26,6 +26,12 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
         - name: "Standard"
           director: "dir-1 = all, !skipped, !restored"
           description: "Send all messages to the Director."
+          append:
+            file: "/var/log/bareos/bareos.log"
+            messages:
+              - all
+              - "!skipped"
+              - "!terminate"
       bareos_sd_devices:
         - name: "FileStorage"
           media_type: "File"

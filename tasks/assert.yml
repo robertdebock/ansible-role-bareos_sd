@@ -130,3 +130,15 @@
     label: "{{ item.name }}"
   when:
     - bareos_sd_messages is defined
+
+- name: assert | Test if item.append in bareos_sd_messages are set correctly
+  ansible.builtin.assert:
+    that:
+      - item.append is mapping
+    quiet: yes
+  loop: "{{ bareos_sd_messages }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_messages is defined
+    - item.append is defined
