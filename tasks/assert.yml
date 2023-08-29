@@ -121,9 +121,6 @@
       - item.name is defined
       - item.name is string
       - item.name is not none
-      - item.director is defined
-      - item.director is string
-      - item.director is not none
     quiet: yes
   loop: "{{ bareos_sd_messages }}"
   loop_control:
@@ -131,10 +128,32 @@
   when:
     - bareos_sd_messages is defined
 
+- name: assert | Test if item.director in bareos_sd_messages are set correctly
+  ansible.builtin.assert:
+    that:
+      - item.director is mapping
+      - item.director.server is defined
+      - item.director.server is string
+      - item.director.server is not none
+      - item.director.messages is defined
+      - item.director.messages is iterable
+    quiet: yes
+  loop: "{{ bareos_sd_messages }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_messages is defined
+    - item.director is defined
+
 - name: assert | Test if item.append in bareos_sd_messages are set correctly
   ansible.builtin.assert:
     that:
       - item.append is mapping
+      - item.append.file is defined
+      - item.append.file is string
+      - item.append.file is not none
+      - item.append.messages is defined
+      - item.append.messages is iterable
     quiet: yes
   loop: "{{ bareos_sd_messages }}"
   loop_control:
@@ -142,3 +161,15 @@
   when:
     - bareos_sd_messages is defined
     - item.append is defined
+
+- name: assert | Test if item.console in bareos_sd_messages are set correctly
+  ansible.builtin.assert:
+    that:
+      - item.console is iterable
+    quiet: yes
+  loop: "{{ bareos_sd_messages }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_messages is defined
+    - item.console is defined

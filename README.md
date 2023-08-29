@@ -24,14 +24,23 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           password: "somepassword"
       bareos_sd_messages:
         - name: "Standard"
-          director: "dir-1 = all, !skipped, !restored"
-          description: "Send all messages to the Director."
+          description: "Send relevant messages to the Director."
+          director:
+            server: bareos-dir
+            messages:
+              - all
+              - "!skipped"
+              - "!restored"
           append:
             file: "/var/log/bareos/bareos.log"
             messages:
               - all
               - "!skipped"
               - "!terminate"
+          console:
+            - all
+            - "!skipped"
+            - "!saved"
       bareos_sd_devices:
         - name: "FileStorage"
           media_type: "File"
@@ -69,7 +78,7 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for bareos_sd
 
 # The Storage Daemon has these configuration parameters.
-bareos_sd_hostname: "{{ ansible_fqdn }}"
+bareos_sd_hostname: "{{ inventory_hostname }}"
 bareos_sd_tls_enable: yes
 bareos_sd_tls_verify_peer: no
 ```
