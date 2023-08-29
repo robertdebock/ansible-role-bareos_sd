@@ -1,6 +1,6 @@
 # [bareos_sd](#bareos_sd)
 
-Install and configure [BareOS](https://www.bareos.com/) Storage Daemon on your system.
+Install and configure [BareOS](https://www.bareos.com/) Storage Daemon.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
