@@ -100,6 +100,8 @@
       - item.removable_media is boolean
       - item.always_open is defined
       - item.always_open is boolean
+      - item.maximum_concurrent_jobs is defined
+      - item.maximum_concurrent_jobs is number
     quiet: yes
   loop: "{{ bareos_sd_devices }}"
   loop_control:

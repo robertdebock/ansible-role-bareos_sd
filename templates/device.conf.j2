@@ -3,6 +3,7 @@
 Device {
   Name = "{{ item.name }}"
   Description = "{{ item.description }}"
+  Maximum Concurrent Jobs = {{ item.maximum_concurrent_jobs }}
   Media Type = "{{ item.media_type }}"
   Archive Device = "{{ item.archive_device }}"
   LabelMedia = {{ item.label_media | ternary('yes', 'No') }}

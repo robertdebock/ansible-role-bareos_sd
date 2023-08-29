@@ -43,6 +43,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
             - "!saved"
       bareos_sd_devices:
         - name: "FileStorage"
+          description: "File device. A connecting Director must have the same Name and MediaType."
           media_type: "File"
           archive_device: "/var/lib/bareos/storage"
           label_media: yes
@@ -50,7 +51,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           automatic_mount: yes
           removable_media: no
           always_open: no
-          description: "File device. A connecting Director must have the same Name and MediaType."
+          maximum_concurrent_jobs: 2
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-bareos_sd/blob/master/molecule/default/prepare.yml):
