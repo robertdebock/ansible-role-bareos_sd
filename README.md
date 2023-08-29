@@ -15,7 +15,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 - name: Converge
   hosts: all
   become: yes
-  gather_facts: yes
+  gather_facts: no
 
   roles:
     - role: robertdebock.bareos_sd
