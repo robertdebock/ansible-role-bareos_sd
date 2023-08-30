@@ -11,6 +11,10 @@ argument_specs:
         type: "str"
         default: "{{ inventory_hostname }}"
         description: "The hostname of the Storage Daemon."
+      bareos_sd_message:
+        type: "str"
+        default: "Standard"
+        description: "The message to send to the director."
       bareos_sd_tls_enable:
         type: "bool"
         default: yes

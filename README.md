@@ -80,6 +80,7 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 
 # The Storage Daemon has these configuration parameters.
 bareos_sd_hostname: "{{ inventory_hostname }}"
+bareos_sd_message: "Standard"
 bareos_sd_tls_enable: yes
 bareos_sd_tls_verify_peer: no
 ```
