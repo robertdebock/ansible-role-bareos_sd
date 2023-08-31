@@ -1,0 +1,6 @@
+---
+# handlers file for bareos_sd
+
+- name: Restart bareos-sd
+  service:
+    name: bareos-sd
