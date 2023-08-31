@@ -22,15 +22,20 @@
   notify:
     - Restart bareos-sd
 
-- name: Place bareos-dir.conf.j2
+- name: Place director
   ansible.builtin.template:
-    src: bareos-dir.conf.j2
-    dest: "/etc/bareos/bareos-sd.d/director/bareos-dir.conf"
+    src: director.conf.j2
+    dest: "/etc/bareos/bareos-sd.d/director/{{ item.name }}.conf"
     owner: bareos
     group: bareos
     mode: "0640"
+  loop: "{{ bareos_sd_directors }}"
+  loop_control:
+    label: "{{ item.name }}"
   notify:
     - Restart bareos-sd
+  when:
+    - bareos_sd_directors is defined
 
 - name: Place device
   ansible.builtin.template:

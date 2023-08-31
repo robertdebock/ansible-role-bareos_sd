@@ -1,5 +1,6 @@
 {{ ansible_managed | comment }}
 
+{% if item.enabled is defined and item.enabled or item.enabled is not defined %}
 Device {
   Name = "{{ item.name }}"
   Description = "{{ item.description }}"
@@ -12,3 +13,6 @@ Device {
   RemovableMedia = {{ item.removable_media | ternary('yes', 'No') }}
   AlwaysOpen = {{ item.always_open | ternary('yes', 'No') }}
 }
+{% else %}
+# This file is not enabled.
+{% endif %}

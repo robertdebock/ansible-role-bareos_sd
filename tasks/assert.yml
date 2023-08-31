@@ -30,7 +30,7 @@
   when:
     - bareos_sd_directors is defined
 
-- name: assert | Test if items in bareos_sd_directors are set correctly
+- name: assert | Test if items in bareos_sd_directors are set correctly when enabled
   ansible.builtin.assert:
     that:
       - item.name is defined
@@ -45,7 +45,9 @@
     label: "{{ item.name }}"
   when:
     - bareos_sd_directors is defined
-
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
+  
 - name: assert | Test if tls_enable in bareos_sd_directors is set correctly
   ansible.builtin.assert:
     that:
@@ -57,6 +59,8 @@
   when:
     - bareos_sd_directors is defined
     - item.tls_enable is defined
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
 
 - name: assert | Test if tls_verify_peer in bareos_sd_directors is set correctly
   ansible.builtin.assert:
@@ -69,6 +73,24 @@
   when:
     - bareos_sd_directors is defined
     - item.tls_verify_peer is defined
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
+
+- name: assert | Test if items in bareos_sd_directors are set correctly when not enabled
+  ansible.builtin.assert:
+    that:
+      - item.name is defined
+      - item.name is string
+      - item.name is not none
+      - item.enabled is defined
+      - item.enabled is boolean
+    quiet: yes
+  loop: "{{ bareos_sd_directors }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_directors is defined
+    - item.enabled is defined and not item.enabled
 
 - name: assert | Test if bareos_sd_devices is set correctly
   ansible.builtin.assert:
@@ -78,7 +100,7 @@
   when:
     - bareos_sd_devices is defined
 
-- name: assert | Test if items in bareos_sd_devices are set correctly
+- name: assert | Test if items in bareos_sd_devices are set correctly when enabled
   ansible.builtin.assert:
     that:
       - item.name is defined
@@ -108,6 +130,24 @@
     label: "{{ item.name }}"
   when:
     - bareos_sd_devices is defined
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
+
+- name: assert | Test if items in bareos_sd_devices are set correctly when not enabled
+  ansible.builtin.assert:
+    that:
+      - item.name is defined
+      - item.name is string
+      - item.name is not none
+      - item.enabled is defined
+      - item.enabled is boolean
+    quiet: yes
+  loop: "{{ bareos_sd_devices }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_devices is defined
+    - item.enabled is defined and not item.enabled
 
 - name: assert | Test if bareos_sd_messages is set correctly
   ansible.builtin.assert:
@@ -117,7 +157,7 @@
   when:
     - bareos_sd_messages is defined
 
-- name: assert | Test if items in bareos_sd_messages are set correctly
+- name: assert | Test if items in bareos_sd_messages are set correctly when enabled
   ansible.builtin.assert:
     that:
       - item.name is defined
@@ -132,6 +172,8 @@
     label: "{{ item.name }}"
   when:
     - bareos_sd_messages is defined
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
 
 - name: assert | Test if item.director in bareos_sd_messages are set correctly
   ansible.builtin.assert:
@@ -149,6 +191,9 @@
   when:
     - bareos_sd_messages is defined
     - item.director is defined
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
+
 
 - name: assert | Test if item.append in bareos_sd_messages are set correctly
   ansible.builtin.assert:
@@ -166,6 +211,8 @@
   when:
     - bareos_sd_messages is defined
     - item.append is defined
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
 
 - name: assert | Test if item.console in bareos_sd_messages are set correctly
   ansible.builtin.assert:
@@ -178,3 +225,21 @@
   when:
     - bareos_sd_messages is defined
     - item.console is defined
+    - item.enabled is not defined or
+      (item.enabled is defined and item.enabled)
+
+- name: assert | Test if items in bareos_sd_messages are set correctly when not enabled
+  ansible.builtin.assert:
+    that:
+      - item.name is defined
+      - item.name is string
+      - item.name is not none
+      - item.enabled is defined
+      - item.enabled is boolean
+    quiet: yes
+  loop: "{{ bareos_sd_messages }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_messages is defined
+    - item.enabled is defined and not item.enabled

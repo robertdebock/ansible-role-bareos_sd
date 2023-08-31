@@ -7,8 +7,10 @@
   roles:
     - role: ansible-role-bareos_sd
       bareos_sd_directors:
-        - name: dir-1
+        - name: bareos-dir
           password: "somepassword"
+        - name: "disabled-director"
+          enabled: no
       bareos_sd_messages:
         - name: "Standard"
           description: "Send relevant messages to the Director."
@@ -28,6 +30,8 @@
             - all
             - "!skipped"
             - "!saved"
+        - name: "disabled-message"
+          enabled: no
       bareos_sd_devices:
         - name: "FileStorage"
           description: "File device. A connecting Director must have the same Name and MediaType."
@@ -39,3 +43,5 @@
           removable_media: no
           always_open: no
           maximum_concurrent_jobs: 1
+        - name: "disabled-device"
+          enabled: no

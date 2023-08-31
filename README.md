@@ -20,8 +20,10 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   roles:
     - role: robertdebock.bareos_sd
       bareos_sd_directors:
-        - name: dir-1
+        - name: bareos-dir
           password: "somepassword"
+        - name: "disabled-director"
+          enabled: no
       bareos_sd_messages:
         - name: "Standard"
           description: "Send relevant messages to the Director."
@@ -41,6 +43,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
             - all
             - "!skipped"
             - "!saved"
+        - name: "disabled-message"
+          enabled: no
       bareos_sd_devices:
         - name: "FileStorage"
           description: "File device. A connecting Director must have the same Name and MediaType."
@@ -52,6 +56,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           removable_media: no
           always_open: no
           maximum_concurrent_jobs: 1
+        - name: "disabled-device"
+          enabled: no
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-bareos_sd/blob/master/molecule/default/prepare.yml):
