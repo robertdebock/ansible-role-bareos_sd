@@ -47,7 +47,7 @@
     - bareos_sd_directors is defined
     - item.enabled is not defined or
       (item.enabled is defined and item.enabled)
-  
+
 - name: assert | Test if tls_enable in bareos_sd_directors is set correctly
   ansible.builtin.assert:
     that:
