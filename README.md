@@ -19,6 +19,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
   roles:
     - role: robertdebock.bareos_sd
+      bareos_sd_backup_configurations: yes
       bareos_sd_directors:
         - name: bareos-dir
           password: "somepassword"

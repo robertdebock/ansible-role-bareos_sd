@@ -6,6 +6,7 @@
 
   roles:
     - role: ansible-role-bareos_sd
+      bareos_sd_backup_configurations: yes
       bareos_sd_directors:
         - name: bareos-dir
           password: "somepassword"
