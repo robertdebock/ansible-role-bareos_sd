@@ -1,7 +1,0 @@
----
-# handlers file for bareos_sd
-
-- name: Restart bareos-sd
-  ansible.builtin.service:
-    name: bareos-sd
-    state: restarted
