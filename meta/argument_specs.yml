@@ -7,6 +7,10 @@ argument_specs:
       Install and configure BareOS Storage Daemon on your system.
     author: Robert de Bock
     options:
+      bareos_sd_backup_configurations:
+        type: "bool"
+        default: no
+        description: "Backup the configuration files."
       bareos_sd_hostname:
         type: "str"
         default: "{{ inventory_hostname }}"

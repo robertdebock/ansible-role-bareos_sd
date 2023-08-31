@@ -19,6 +19,7 @@
     owner: bareos
     group: bareos
     mode: "0640"
+    backup: "{{ bareos_sd_backup_configurations }}"
   notify:
     - Restart bareos-sd
 
@@ -29,6 +30,7 @@
     owner: bareos
     group: bareos
     mode: "0640"
+    backup: "{{ bareos_sd_backup_configurations }}"
   loop: "{{ bareos_sd_directors }}"
   loop_control:
     label: "{{ item.name }}"
@@ -44,6 +46,7 @@
     owner: bareos
     group: bareos
     mode: "0640"
+    backup: "{{ bareos_sd_backup_configurations}}"
   loop: "{{ bareos_sd_devices }}"
   loop_control:
     label: "{{ item.name }}"
@@ -59,6 +62,7 @@
     owner: bareos
     group: bareos
     mode: "0640"
+    backup: "{{ bareos_sd_backup_configurations }}"
   loop: "{{ bareos_sd_messages }}"
   loop_control:
     label: "{{ item.name }}"
