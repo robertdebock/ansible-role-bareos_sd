@@ -91,6 +91,10 @@ bareos_sd_hostname: "{{ inventory_hostname }}"
 bareos_sd_message: "Standard"
 bareos_sd_tls_enable: yes
 bareos_sd_tls_verify_peer: no
+
+bareos_sd_directors: []
+bareos_sd_messages: []
+bareos_sd_devices: []
 ```
 
 ## [Requirements](#requirements)
