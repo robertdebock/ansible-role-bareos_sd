@@ -18,7 +18,7 @@ argument_specs:
       bareos_sd_message:
         type: "str"
         default: "Standard"
-        description: "The message to send to the director."
+        description: "The messages configuration to use."
       bareos_sd_tls_enable:
         type: "bool"
         default: yes

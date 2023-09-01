@@ -87,15 +87,28 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 
 # The Storage Daemon has these configuration parameters.
 
-# 
+# Backup the configuration files.
 bareos_sd_backup_configurations: no
+
+# The hostname of the Storage Daemon.
 bareos_sd_hostname: "{{ inventory_hostname }}"
+
+# The messages configuration to use.
 bareos_sd_message: "Standard"
+
+# Enable TLS.
 bareos_sd_tls_enable: yes
+
+# Verify the peer.
 bareos_sd_tls_verify_peer: no
 
+# A list of devices to configure.
 bareos_sd_devices: []
+
+# A list of directors to connect to.
 bareos_sd_directors: []
+
+# A list of messages to send to the director.
 bareos_sd_messages: []
 ```
 
