@@ -19,6 +19,7 @@
     mode: "0640"
     backup: "{{ bareos_sd_backup_configurations }}"
   notify:
+    - Check configuration
     - Restart bareos-sd
 
 - name: Place director
@@ -33,6 +34,7 @@
   loop_control:
     label: "{{ item.name }}"
   notify:
+    - Check configuration
     - Restart bareos-sd
   when:
     - bareos_sd_directors is defined
@@ -49,6 +51,7 @@
   loop_control:
     label: "{{ item.name }}"
   notify:
+    - Check configuration
     - Restart bareos-sd
   when:
     - bareos_sd_devices is defined
@@ -65,6 +68,7 @@
   loop_control:
     label: "{{ item.name }}"
   notify:
+    - Check configuration
     - Restart bareos-sd
 
 - name: Start bareos-sd
