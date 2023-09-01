@@ -40,34 +40,27 @@
 - name: assert | Test if bareos_sd_directors is set correctly
   ansible.builtin.assert:
     that:
+      - bareos_sd_directors is defined
       - bareos_sd_directors is iterable
     quiet: yes
-  when:
-    - bareos_sd_directors is defined
 
 - name: assert | Test if bareos_sd_devices is set correctly
   ansible.builtin.assert:
     that:
+      - bareos_sd_devices is defined
       - bareos_sd_devices is iterable
-      - bareos_sd_devices is not none
     quiet: yes
-  when:
-    - bareos_sd_devices is defined
 
 - name: assert | Test if bareos_sd_directors is set correctly
   ansible.builtin.assert:
     that:
+      - bareos_sd_directors is defined
       - bareos_sd_directors is iterable
-      - bareos_sd_directors is not none
     quiet: yes
-  when:
-    - bareos_sd_directors is defined
 
 - name: assert | Test if bareos_sd_messages is set correctly
   ansible.builtin.assert:
     that:
+      - bareos_sd_messages is defined
       - bareos_sd_messages is iterable
-      - bareos_sd_messages is not none
     quiet: yes
-  when:
-    - bareos_sd_messages is defined
