@@ -20,6 +20,19 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   roles:
     - role: robertdebock.bareos_sd
       bareos_sd_backup_configurations: yes
+      bareos_sd_devices:
+        - name: "FileStorage"
+          description: "File device. A connecting Director must have the same Name and MediaType."
+          media_type: "File"
+          archive_device: "/var/lib/bareos/storage"
+          label_media: yes
+          random_access: yes
+          automatic_mount: yes
+          removable_media: no
+          always_open: no
+          maximum_concurrent_jobs: 1
+        - name: "disabled-device"
+          enabled: no
       bareos_sd_directors:
         - name: bareos-dir
           password: "somepassword"
@@ -45,19 +58,6 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
             - "!skipped"
             - "!saved"
         - name: "disabled-message"
-          enabled: no
-      bareos_sd_devices:
-        - name: "FileStorage"
-          description: "File device. A connecting Director must have the same Name and MediaType."
-          media_type: "File"
-          archive_device: "/var/lib/bareos/storage"
-          label_media: yes
-          random_access: yes
-          automatic_mount: yes
-          removable_media: no
-          always_open: no
-          maximum_concurrent_jobs: 1
-        - name: "disabled-device"
           enabled: no
 ```
 
@@ -86,15 +86,17 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for bareos_sd
 
 # The Storage Daemon has these configuration parameters.
+
+# 
 bareos_sd_backup_configurations: no
 bareos_sd_hostname: "{{ inventory_hostname }}"
 bareos_sd_message: "Standard"
 bareos_sd_tls_enable: yes
 bareos_sd_tls_verify_peer: no
 
+bareos_sd_devices: []
 bareos_sd_directors: []
 bareos_sd_messages: []
-bareos_sd_devices: []
 ```
 
 ## [Requirements](#requirements)

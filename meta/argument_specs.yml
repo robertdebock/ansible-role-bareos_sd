@@ -27,14 +27,14 @@ argument_specs:
         type: "bool"
         default: no
         description: "Verify the peer."
-      bareos_sd_directors:
-        type: "list"
-        default: []
-        description: "A list of directors to connect to."
       bareos_sd_devices:
         type: "list"
         default: []
         description: "A list of devices to configure."
+      bareos_sd_directors:
+        type: "list"
+        default: []
+        description: "A list of directors to connect to."
       bareos_sd_messages:
         type: "list"
         default: []
