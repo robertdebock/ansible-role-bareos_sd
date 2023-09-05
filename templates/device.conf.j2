@@ -9,6 +9,9 @@ Device {
   Maximum Concurrent Jobs = {{ item.maximum_concurrent_jobs }}
   Media Type = "{{ item.media_type }}"
   Archive Device = "{{ item.archive_device }}"
+{% if item.device_type is defined %}
+  Device Type = "{{ item.device_type }}"
+{% endif %}
   LabelMedia = {{ item.label_media | ternary('yes', 'No') }}
   Random Access = {{ item.random_access | ternary('yes', 'No') }}
   AutomaticMount = {{ item.automatic_mount | ternary('yes', 'No') }}
