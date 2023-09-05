@@ -3,7 +3,9 @@
 {% if item.enabled is defined and item.enabled or item.enabled is not defined %}
 Device {
   Name = "{{ item.name }}"
+{% if item.description is defined %}
   Description = "{{ item.description }}"
+{% endif %}
   Maximum Concurrent Jobs = {{ item.maximum_concurrent_jobs }}
   Media Type = "{{ item.media_type }}"
   Archive Device = "{{ item.archive_device }}"
