@@ -64,3 +64,10 @@
       - bareos_sd_messages is defined
       - bareos_sd_messages is iterable
     quiet: yes
+
+- name: assert | Test if bareos_sd_s3_profiles is set correctly
+  ansible.builtin.assert:
+    that:
+      - bareos_sd_s3_profiles is defined
+      - bareos_sd_s3_profiles is iterable
+    quiet: yes

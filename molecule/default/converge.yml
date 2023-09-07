@@ -46,3 +46,14 @@
             - "!saved"
         - name: "disabled-message"
           enabled: no
+      bareos_sd_s3_profiles:
+        - name: exoscale
+          host: sos.exo.io
+          use_https: yes
+          ssl_method: "SSLv3"
+          access_key: "SomeAPIKey"
+          secret_key: "SomeSecret"
+          pricing_dir: ""
+          backend: "s3"
+          aws_auth_sign_version: 4
+          aws_region: "ch-gva-2"

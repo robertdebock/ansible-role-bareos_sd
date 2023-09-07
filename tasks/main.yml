@@ -71,6 +71,35 @@
     - Check configuration
     - Restart bareos-sd
 
+- name: Install bareos-storage-droplet.
+  ansible.builtin.package:
+    name: bareos-storage-droplet
+  when:
+    - bareos_sd_s3_profiles | length > 0
+
+- name: Create /etc/bareos/bareos-sd.d/device/droplet
+  ansible.builtin.file:
+    path: /etc/bareos/bareos-sd.d/device/droplet
+    state: directory
+    owner: bareos
+    group: bareos
+    mode: "0755"
+  when:
+    - bareos_sd_s3_profiles | length > 0
+
+- name: Place S3 profile
+  ansible.builtin.template:
+    src: s3.profile.j2
+    dest: /etc/bareos/bareos-sd.d/device/droplet/{{ item.name }}.profile
+    owner: bareos
+    group: bareos
+    mode: "0600"
+  loop: "{{ bareos_sd_s3_profiles }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - bareos_sd_s3_profiles is defined
+
 - name: Start bareos-sd
   ansible.builtin.service:
     name: bareos-sd

@@ -39,3 +39,7 @@ argument_specs:
         type: "list"
         default: []
         description: "A list of messages to send to the director."
+      bareos_sd_s3_profiles:
+        type: "list"
+        default: []
+        description: "A list of S3 profiles to configure."
