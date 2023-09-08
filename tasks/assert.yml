@@ -27,7 +27,7 @@
   ansible.builtin.assert:
     that:
       - bareos_sd_max_concurrent_jobs is defined
-      - bareos_sd_max_concurrent_jobs is int
+      - bareos_sd_max_concurrent_jobs is number
     quiet: yes
 
 - name: assert | Test if bareos_sd_tls_enable is set correctly
