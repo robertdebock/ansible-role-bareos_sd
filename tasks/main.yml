@@ -97,6 +97,9 @@
   loop: "{{ bareos_sd_s3_profiles }}"
   loop_control:
     label: "{{ item.name }}"
+  notify:
+    - Check configuration
+    - Restart bareos-sd
   when:
     - bareos_sd_s3_profiles is defined
 
