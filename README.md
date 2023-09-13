@@ -62,7 +62,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           enabled: no
       bareos_sd_s3_profiles:
         - name: exoscale
-          host: sos.exo.io
+          host: "sos.exo.io:443"
           use_https: yes
           access_key: "SomeAPIKey"
           secret_key: "SomeSecret"

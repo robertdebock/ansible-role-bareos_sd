@@ -1,6 +1,6 @@
 {{ ansible_managed | comment }}
 
-host                  = {{ item.host }}
+host                  = "{{ item.host }}"
 use_https             = {{ item.use_https | ternary("true", "false") }}
 access_key            = {{ item.access_key }}
 secret_key            = {{ item.secret_key }}
