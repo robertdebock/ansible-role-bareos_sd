@@ -9,5 +9,5 @@ _bareos_sd_debug_packages:
   default:
     - "bareos-storage-debuginfo"
   Debian:
-    - "bareos-storage-dbg"
+    - "bareos-dbg"
 bareos_sd_debug_packages: "{{ _bareos_sd_debug_packages[ansible_os_family] | default(_bareos_sd_debug_packages['default']) }}"
