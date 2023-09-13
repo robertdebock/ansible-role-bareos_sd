@@ -63,7 +63,6 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
         - name: exoscale
           host: sos.exo.io
           use_https: yes
-          ssl_method: "SSLv3"
           access_key: "SomeAPIKey"
           secret_key: "SomeSecret"
           pricing_dir: ""
