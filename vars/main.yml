@@ -11,7 +11,6 @@ _bareos_sd_debug_packages:
     - "bareos-storage-debuginfo"
   Debian:
     - "bareos-dbg"
-  RedHat:
-    "7":
-      - "bareos-debuginfo"
-bareos_sd_debug_packages: "{{ _bareos_sd_debug_packages[ansible_os_family][ansible_distribution_major_version] | default(_bareos_sd_debug_packages[ansible_os_family] | default(_bareos_sd_debug_packages['default'])) }}"
+  RedHat-7:
+    - "bareos-debuginfo"
+bareos_sd_debug_packages: "{{ _bareos_sd_debug_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_bareos_sd_debug_packages[ansible_os_family] | default(_bareos_sd_debug_packages['default'])) }}"
