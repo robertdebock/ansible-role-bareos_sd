@@ -2,11 +2,12 @@
 - name: Converge
   hosts: all
   become: yes
-  gather_facts: no
+  gather_facts: yes
 
   roles:
     - role: ansible-role-bareos_sd
       bareos_sd_backup_configurations: yes
+      bareos_sd_install_debug_packages: yes
       bareos_sd_devices:
         - name: "FileStorage"
           description: "File device. A connecting Director must have the same Name and MediaType."
