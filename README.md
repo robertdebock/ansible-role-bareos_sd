@@ -1,4 +1,4 @@
-# Ansible role [bareos_sd](#bareos_sd)
+# [Ansible role bareos_sd](#bareos_sd)
 
 Install and configure [Bareos](https://www.bareos.com/) Storage Daemon.
 
