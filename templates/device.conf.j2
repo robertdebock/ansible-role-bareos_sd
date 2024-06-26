@@ -6,6 +6,9 @@ Device {
 {% if item.description is defined %}
   Description = "{{ item.description }}"
 {% endif %}
+{% if item.count is defined %}
+  Count = "{{ item.count }}"
+{% endif %}
 {% if item.maximum_concurrent_jobs is defined %}
   Maximum Concurrent Jobs = {{ item.maximum_concurrent_jobs }}
 {% endif %}
