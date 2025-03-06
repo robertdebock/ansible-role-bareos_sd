@@ -18,7 +18,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   gather_facts: true
 
   roles:
-    - role: ansible-role-bareos_sd
+    - role: robertdebock.bareos_sd
       bareos_sd_backup_configurations: true
       bareos_sd_install_debug_packages: true
       bareos_sd_devices:
